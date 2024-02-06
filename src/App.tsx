@@ -1,14 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Search } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DialogCustom } from "./components/core/dialog-student";
 import { TableData } from "./components/core/table-data";
 import { ModeToggle } from "./components/theme/mode-toggle";
 import { ThemeProvider } from "./components/theme/theme-provider";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
+import { UseApiStudents } from "./service/hooks/use-students-api";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [dataStudents, setDataStudents] = useState<any[]>([]);
+
+  const apiStudents = UseApiStudents();
+
+  const getData = async () => {
+    try {
+      const data = await apiStudents.getAllStudents();
+      setDataStudents(data);
+    } catch (error) {
+      window.alert("Erro");
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -26,7 +45,7 @@ function App() {
             Buscar
           </Button>
         </div>
-        <TableData />
+        <TableData data={dataStudents} />
       </div>
     </ThemeProvider>
   );
