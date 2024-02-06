@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import { DialogCustom } from "./components/core/dialog-student";
-import { TableData } from "./components/core/table-data";
+import { Button } from "./components/core/button";
+import { Input } from "./components/core/input";
 import { ModeToggle } from "./components/theme/mode-toggle";
 import { ThemeProvider } from "./components/theme/theme-provider";
-import { Button } from "./components/ui/button";
-import { Input } from "./components/ui/input";
+import { DialogCustom } from "./components/ui/dialog-student";
+import { TableStudents } from "./components/ui/table-students";
 import { UseApiStudents } from "./service/hooks/use-students-api";
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
             Buscar
           </Button>
         </div>
-        <TableData data={dataStudents} />
+        <TableStudents data={dataStudents} />
       </div>
     </ThemeProvider>
   );

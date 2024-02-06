@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/core/table";
 
 interface PropsTableData {
   data: any[];
 }
 
-export function TableData(props: PropsTableData) {
+export function TableStudents(props: PropsTableData) {
   return (
     <Table>
       <TableHeader>
